@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody rb;
-    [SerializeField] float movementSpeed = 5f;
+    [SerializeField] float movementSpeed = 0.1f;
+    [SerializeField] float rotationSpeed = 1.5f;
     [SerializeField] float jumpForce = 5f;
     [SerializeField] float smallJumpForce = 3f;
 
@@ -23,7 +24,13 @@ public class PlayerMovement : MonoBehaviour
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
-        rb.velocity = new Vector3(horizontalInput * movementSpeed, rb.velocity.y, verticalInput * movementSpeed);
+        float mouseX = Input.GetAxis("Mouse X");
+        float mouseY = Input.GetAxis("Mouse Y");
+        //Debug.Log("mouseX : " + mouseX);
+        //rb.velocity = new Vector3(horizontalInput * movementSpeed, rb.velocity.y, verticalInput * movementSpeed);
+        transform.Translate(Vector3.forward * verticalInput * movementSpeed * Time.deltaTime);
+        transform.Translate(Vector3.right * horizontalInput * movementSpeed * Time.deltaTime);
+        transform.Rotate(new Vector3(0, mouseX * rotationSpeed, 0));
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
