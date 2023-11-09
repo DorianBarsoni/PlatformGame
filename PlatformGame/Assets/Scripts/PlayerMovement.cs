@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody rb;
     [SerializeField] float movementSpeed = 5f;
     [SerializeField] float jumpForce = 5f;
+    [SerializeField] float smallJumpForce = 3f;
 
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask ground;
@@ -36,6 +37,11 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
     }
 
+    void SmallJump()
+    {
+        rb.velocity = new Vector3(rb.velocity.x, smallJumpForce, rb.velocity.z);
+    }
+
     bool IsGrounded()
     {
         return Physics.CheckSphere(groundCheck.position, .1f, ground);
@@ -46,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
         if(collision.gameObject.CompareTag("Enemy Head"))
         {
             Destroy(collision.gameObject.transform.parent.gameObject);
-            Jump();
+            SmallJump();
         }
     }
 }
