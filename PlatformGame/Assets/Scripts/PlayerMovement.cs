@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float rotationSpeed = 1.5f;
     [SerializeField] float jumpForce = 5f;
     [SerializeField] float smallJumpForce = 3f;
+    private float sqrt_2 = MathF.Sqrt(2f);
+    private float centerRotation = 0f;
 
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask ground;
@@ -26,13 +29,33 @@ public class PlayerMovement : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");
-        //Debug.Log("mouseX : " + mouseX);
-        //rb.velocity = new Vector3(horizontalInput * movementSpeed, rb.velocity.y, verticalInput * movementSpeed);
-        transform.Translate(Vector3.forward * verticalInput * movementSpeed * Time.deltaTime);
-        transform.Translate(Vector3.right * horizontalInput * movementSpeed * Time.deltaTime);
-        transform.Rotate(new Vector3(0, mouseX * rotationSpeed, 0));
+        float velocityX;
+        float velocityY;
 
-        if (Input.GetButtonDown("Jump") && IsGrounded())
+        if (horizontalInput!=0 && verticalInput!=0)
+        {
+            velocityX = verticalInput * movementSpeed * Time.deltaTime/sqrt_2;
+            velocityY = horizontalInput * movementSpeed * Time.deltaTime/sqrt_2;
+        }
+        else
+        {
+            velocityX = verticalInput * movementSpeed * Time.deltaTime;
+            velocityY = horizontalInput * movementSpeed * Time.deltaTime;
+        }
+
+        //rb.velocity = new Vector3(horizontalInput * movementSpeed, rb.velocity.y, verticalInput * movementSpeed);
+        transform.Translate(Vector3.forward * velocityX);
+        transform.Translate(Vector3.right * velocityY);
+        transform.Rotate(new Vector3(0, mouseX * rotationSpeed, 0));
+        if( !((centerRotation - mouseY*rotationSpeed)<-40 || (centerRotation - mouseY*rotationSpeed) > 63) )
+        {
+            centerRotation -= mouseY*rotationSpeed;
+            transform.Find("Center").Rotate(-mouseY*rotationSpeed, 0, 0);
+        }
+        
+
+
+        if (Input.GetButton("Jump") && IsGrounded())
         {
             Jump();
         }
