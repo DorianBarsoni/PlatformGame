@@ -8,6 +8,12 @@ public class PlayerLife : MonoBehaviour
 {
 
     bool dead = false;
+    [SerializeField] AudioSource deathSound;
+
+    public void Start()
+    {
+        
+    }
 
     private void Update()
     {
@@ -31,6 +37,8 @@ public class PlayerLife : MonoBehaviour
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<Rigidbody>().isKinematic = true;
         GetComponent<PlayerMovement>().enabled = false;
+        transform.Find("/BG Music").gameObject.GetComponent<AudioSource>().Stop();
+        deathSound.Play();
         Invoke(nameof(ReloadLevel), 1.3f);
     }
 

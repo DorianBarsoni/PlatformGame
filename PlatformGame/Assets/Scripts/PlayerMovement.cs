@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask ground;
+    [SerializeField] AudioSource jumpSound;
 
     // Start is called before the first frame update
     void Start()
@@ -55,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
         
 
 
-        if (Input.GetButton("Jump") && IsGrounded())
+        if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             Jump();
         }
@@ -65,11 +66,15 @@ public class PlayerMovement : MonoBehaviour
     void Jump()
     {
         rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
+        jumpSound.pitch = 1f;
+        jumpSound.Play();
     }
 
     void SmallJump()
     {
         rb.velocity = new Vector3(rb.velocity.x, smallJumpForce, rb.velocity.z);
+        jumpSound.pitch = 1.5f;
+        jumpSound.Play();
     }
 
     bool IsGrounded()
