@@ -30,23 +30,24 @@ public class PlayerMovement : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");
-        float velocityX;
-        float velocityY;
+        Vector3 velocityX;
+        Vector3 velocityY;
 
         if (horizontalInput!=0 && verticalInput!=0)
         {
-            velocityX = verticalInput * movementSpeed * Time.deltaTime/sqrt_2;
-            velocityY = horizontalInput * movementSpeed * Time.deltaTime/sqrt_2;
+            velocityX = transform.forward *  verticalInput * movementSpeed/sqrt_2;
+            velocityY = transform.right * horizontalInput * movementSpeed/sqrt_2;
         }
         else
         {
-            velocityX = verticalInput * movementSpeed * Time.deltaTime;
-            velocityY = horizontalInput * movementSpeed * Time.deltaTime;
+            velocityX = transform.forward * verticalInput * movementSpeed;
+            velocityY = transform.right * horizontalInput * movementSpeed;
         }
+        
 
         //rb.velocity = new Vector3(horizontalInput * movementSpeed, rb.velocity.y, verticalInput * movementSpeed);
-        transform.Translate(Vector3.forward * velocityX);
-        transform.Translate(Vector3.right * velocityY);
+        rb.velocity = (velocityX  + velocityY + Vector3.up * rb.velocity.y);
+        //transform.Translate(Vector3.forward * velocityX * Time.deltaTime + Vector3.right * velocityY * Time.deltaTime);
         transform.Rotate(new Vector3(0, mouseX * rotationSpeed, 0));
         if( !((centerRotation - mouseY*rotationSpeed)<-40 || (centerRotation - mouseY*rotationSpeed) > 63) )
         {
