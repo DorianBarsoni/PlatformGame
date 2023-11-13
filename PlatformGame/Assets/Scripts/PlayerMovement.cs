@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask ground;
     [SerializeField] AudioSource jumpSound;
+    [SerializeField] Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +34,15 @@ public class PlayerMovement : MonoBehaviour
         Vector3 velocityX;
         Vector3 velocityY;
 
+        if(horizontalInput + verticalInput != 0)
+        {
+            animator.SetBool("isRunning", true);
+        }
+        else
+        {
+            animator.SetBool("isRunning", false);
+        }
+
         if (horizontalInput!=0 && verticalInput!=0)
         {
             velocityX = transform.forward *  verticalInput * movementSpeed/sqrt_2;
@@ -45,9 +55,7 @@ public class PlayerMovement : MonoBehaviour
         }
         
 
-        //rb.velocity = new Vector3(horizontalInput * movementSpeed, rb.velocity.y, verticalInput * movementSpeed);
         rb.velocity = (velocityX  + velocityY + Vector3.up * rb.velocity.y);
-        //transform.Translate(Vector3.forward * velocityX * Time.deltaTime + Vector3.right * velocityY * Time.deltaTime);
         transform.Rotate(new Vector3(0, mouseX * rotationSpeed, 0));
         if( !((centerRotation - mouseY*rotationSpeed)<-40 || (centerRotation - mouseY*rotationSpeed) > 63) )
         {
@@ -60,6 +68,15 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             Jump();
+        }
+
+        if(IsGrounded())
+        {
+            animator.SetBool("isJumping", false);
+        }
+        else
+        {
+            animator.SetBool("isJumping", true);
         }
 
     }

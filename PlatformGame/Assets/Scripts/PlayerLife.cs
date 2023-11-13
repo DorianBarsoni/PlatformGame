@@ -34,7 +34,7 @@ public class PlayerLife : MonoBehaviour
     private void Die()
     {
         dead = true;
-        GetComponent<MeshRenderer>().enabled = false;
+        //GetComponent<MeshRenderer>().enabled = false;
         GetComponent<Rigidbody>().isKinematic = true;
         GetComponent<PlayerMovement>().enabled = false;
         transform.Find("/BG Music").gameObject.GetComponent<AudioSource>().Stop();
