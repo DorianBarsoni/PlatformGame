@@ -1,6 +1,7 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - EnemyWayPointFollower
     - Finish
     - ItemCollector
     - PlayerLife
@@ -12,6 +13,12 @@ ScriptsOnlyBuild:
     - WayPointFollower
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
+    UnityEditor.Graphs.dll:
+    - UnityEditor.Graphs.AnimationBlendTree.Graph
+    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.Graph
+    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -90,11 +97,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3374}
     - Class: 114
-      Script: {instanceID: 5224}
+      Script: {instanceID: 5226}
     - Class: 114
-      Script: {instanceID: 5518}
+      Script: {instanceID: 5520}
     - Class: 114
-      Script: {instanceID: 5978}
+      Script: {instanceID: 5980}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -134,6 +141,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 65
       Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
     - Class: 82
@@ -141,6 +150,12 @@ ScriptsOnlyBuild:
     - Class: 83
       Script: {instanceID: 0}
     - Class: 89
+      Script: {instanceID: 0}
+    - Class: 90
+      Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
@@ -161,17 +176,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4406}
     - Class: 114
-      Script: {instanceID: 4996}
+      Script: {instanceID: 4532}
     - Class: 114
-      Script: {instanceID: 5024}
+      Script: {instanceID: 4998}
     - Class: 114
-      Script: {instanceID: 5224}
+      Script: {instanceID: 5026}
     - Class: 114
-      Script: {instanceID: 5518}
+      Script: {instanceID: 5226}
     - Class: 114
-      Script: {instanceID: 5978}
+      Script: {instanceID: 5520}
     - Class: 114
-      Script: {instanceID: 6974}
+      Script: {instanceID: 5980}
+    - Class: 114
+      Script: {instanceID: 6976}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -180,7 +197,7 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 135
       Script: {instanceID: 0}
-    - Class: 136
+    - Class: 137
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
@@ -215,6 +232,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 65
       Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
     - Class: 82
@@ -222,6 +241,12 @@ ScriptsOnlyBuild:
     - Class: 83
       Script: {instanceID: 0}
     - Class: 89
+      Script: {instanceID: 0}
+    - Class: 90
+      Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
@@ -242,17 +267,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4406}
     - Class: 114
-      Script: {instanceID: 4996}
+      Script: {instanceID: 4532}
     - Class: 114
-      Script: {instanceID: 5024}
+      Script: {instanceID: 4998}
     - Class: 114
-      Script: {instanceID: 5224}
+      Script: {instanceID: 5026}
     - Class: 114
-      Script: {instanceID: 5518}
+      Script: {instanceID: 5226}
     - Class: 114
-      Script: {instanceID: 5978}
+      Script: {instanceID: 5520}
     - Class: 114
-      Script: {instanceID: 6974}
+      Script: {instanceID: 5980}
+    - Class: 114
+      Script: {instanceID: 6976}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -261,7 +288,7 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 135
       Script: {instanceID: 0}
-    - Class: 136
+    - Class: 137
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
@@ -296,6 +323,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 65
       Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
     - Class: 82
@@ -303,6 +332,12 @@ ScriptsOnlyBuild:
     - Class: 83
       Script: {instanceID: 0}
     - Class: 89
+      Script: {instanceID: 0}
+    - Class: 90
+      Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
@@ -323,17 +358,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4406}
     - Class: 114
-      Script: {instanceID: 4996}
+      Script: {instanceID: 4532}
     - Class: 114
-      Script: {instanceID: 5024}
+      Script: {instanceID: 4998}
     - Class: 114
-      Script: {instanceID: 5224}
+      Script: {instanceID: 5026}
     - Class: 114
-      Script: {instanceID: 5518}
+      Script: {instanceID: 5226}
     - Class: 114
-      Script: {instanceID: 5978}
+      Script: {instanceID: 5520}
     - Class: 114
-      Script: {instanceID: 6974}
+      Script: {instanceID: 5980}
+    - Class: 114
+      Script: {instanceID: 6976}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -342,7 +379,7 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 135
       Script: {instanceID: 0}
-    - Class: 136
+    - Class: 137
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
@@ -390,11 +427,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3374}
     - Class: 114
-      Script: {instanceID: 5224}
+      Script: {instanceID: 5226}
     - Class: 114
-      Script: {instanceID: 5518}
+      Script: {instanceID: 5520}
     - Class: 114
-      Script: {instanceID: 5978}
+      Script: {instanceID: 5980}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -576,7 +613,7 @@ ScriptsOnlyBuild:
     className: GraphicRaycaster
   - hash:
       serializedVersion: 2
-      Hash: e485bd1042532e1eb90c3f7898090bd9
+      Hash: 2084a83ad03fe95eccec904ed14ec992
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: PlayerMovement
@@ -856,6 +893,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnPointerClickMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 270b350eb6834b0c69589b0dffe6a750
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: EnemyWayPointFollower
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
