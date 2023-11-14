@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask ground;
     [SerializeField] AudioSource jumpSound;
+    [SerializeField] AudioSource goombaStomp;
+    [SerializeField] AudioSource breakBlock;
     [SerializeField] Animator animator;
 
     // Start is called before the first frame update
@@ -88,11 +90,9 @@ public class PlayerMovement : MonoBehaviour
         jumpSound.Play();
     }
 
-    void SmallJump()
+    void SmallJump(bool isEnemy)
     {
         rb.velocity = new Vector3(rb.velocity.x, smallJumpForce, rb.velocity.z);
-        jumpSound.pitch = 1.5f;
-        jumpSound.Play();
     }
 
     bool IsGrounded()
@@ -105,7 +105,14 @@ public class PlayerMovement : MonoBehaviour
         if(collision.gameObject.CompareTag("Enemy Head"))
         {
             Destroy(collision.gameObject.transform.parent.gameObject);
-            SmallJump();
+            goombaStomp.Play();
+            SmallJump(true);
+        }
+        if(collision.gameObject.CompareTag("Platform Head"))
+        {
+            Destroy(collision.gameObject.transform.parent.gameObject);
+            breakBlock.Play();
+            SmallJump(false);
         }
     }
 }

@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 8691279912739387033}
   m_Layer: 0
   m_Name: Head
-  m_TagString: Enemy Head
+  m_TagString: Platform Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

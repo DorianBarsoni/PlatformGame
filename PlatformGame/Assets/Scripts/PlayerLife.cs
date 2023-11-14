@@ -39,7 +39,7 @@ public class PlayerLife : MonoBehaviour
         GetComponent<PlayerMovement>().enabled = false;
         transform.Find("/BG Music").gameObject.GetComponent<AudioSource>().Stop();
         deathSound.Play();
-        Invoke(nameof(ReloadLevel), 1.3f);
+        Invoke(nameof(ReloadLevel), 2.8f);
     }
 
     private void ReloadLevel()
