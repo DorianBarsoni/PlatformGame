@@ -7,13 +7,13 @@ public class StartMenu : MonoBehaviour
 {
     [SerializeField] int levelNumber;
     [SerializeField] AudioSource buttonSound;
-    private float speedButton = .1f; 
+    private float speedButton = .1f;
 
     public void StartLevel()
     {
         buttonSound.Play();
+        Cursor.visible = false;
         Invoke(nameof(LoadLevel), speedButton);
-        
     }
 
     private void LoadLevel()
