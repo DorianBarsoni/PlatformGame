@@ -778,7 +778,7 @@ GameObject:
   m_Component:
   - component: {fileID: 284220967}
   - component: {fileID: 284220968}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Scale1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3426,7 +3426,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1393032326}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Moving Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}

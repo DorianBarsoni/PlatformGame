@@ -2499,7 +2499,7 @@ MonoBehaviour:
   rotationSpeed: 1.5
   jumpForce: 5
   smallJumpForce: 3
-  groundCheck: {fileID: 8840728769428814646, guid: 3586329e9c3a0a548be87d57d60d70ed, type: 3}
+  groundCheck: {fileID: 1595814523282025793}
   ground:
     serializedVersion: 2
     m_Bits: 64
